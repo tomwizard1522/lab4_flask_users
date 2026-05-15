@@ -33,3 +33,18 @@
 2. Создать виртуальное окружение:
    ```bash
    python -m venv venv
+3. Активировать виртуальное окружение:
+   ```bash
+   Windows: venv\Scripts\activate
+
+   Linux/Mac: source venv/bin/activate
+
+4. Установить зависимости:
+
+```bash
+pip install -r requirements.txt
+
+5. Запустить приложение:
+
+```bash
+python app.py
