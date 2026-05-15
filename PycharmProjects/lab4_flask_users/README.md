@@ -30,19 +30,24 @@
 ## Установка и запуск
 
 1. Клонировать репозиторий
+   
 2. Создать виртуальное окружение:
    ```bash
    python -m venv venv
+   
 3. Активировать виртуальное окружение:
+   Windows:
    ```bash
-   Windows: venv\Scripts\activate
+   venv\Scripts\activate
 
-   Linux/Mac: source venv/bin/activate
+   Linux/Mac:
+   ```bash
+   source venv/bin/activate
 
-4. Установить зависимости:
+5. Установить зависимости:
    ```bash
    pip install -r requirements.txt
 
-5. Запустить приложение:
+6. Запустить приложение:
    ```bash
    python app.py
