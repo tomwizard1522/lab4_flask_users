@@ -39,11 +39,11 @@
    Windows:
       ```bash
       venv\Scripts\activate
-   
+      ```
    Linux/Mac:
       ```bash
       source venv/bin/activate
-
+      ```
 5. Установить зависимости:
       ```bash
       pip install -r requirements.txt
