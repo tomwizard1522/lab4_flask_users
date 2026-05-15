@@ -1,0 +1,38 @@
+{% macro render_field(field_name, label, value, type='text', required=false, errors={}, placeholder='') %}
+<div class="mb-3">
+    <label for="{{ field_name }}" class="form-label">{{ label }}{% if required %} <span class="text-danger">*</span>{% endif %}</label>
+    <input type="{{ type }}" 
+           class="form-control {% if errors and errors.get(field_name) %}is-invalid{% endif %}" 
+           id="{{ field_name }}" 
+           name="{{ field_name }}" 
+           value="{{ value }}"
+           {% if required %}required{% endif %}
+           placeholder="{{ placeholder }}">
+    {% if errors and errors.get(field_name) %}
+    <div class="invalid-feedback">
+        {{ errors[field_name] }}
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro render_select(field_name, label, options, selected_value, required=false, errors={}) %}
+<div class="mb-3">
+    <label for="{{ field_name }}" class="form-label">{{ label }}</label>
+    <select class="form-select {% if errors and errors.get(field_name) %}is-invalid{% endif %}" 
+            id="{{ field_name }}" 
+            name="{{ field_name }}">
+        <option value="">-- Выберите роль --</option>
+        {% for option in options %}
+        <option value="{{ option.id }}" {% if selected_value == option.id|string %}selected{% endif %}>
+            {{ option.name }}
+        </option>
+        {% endfor %}
+    </select>
+    {% if errors and errors.get(field_name) %}
+    <div class="invalid-feedback">
+        {{ errors[field_name] }}
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}

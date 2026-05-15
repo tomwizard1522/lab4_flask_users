@@ -1,0 +1,31 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+ve/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Flask
+instance/
+.env
+.flaskenv
+
+# Python
+dist/
+build/
+*.egg-info/
+
+# Database
+*.db
+*.db-journal

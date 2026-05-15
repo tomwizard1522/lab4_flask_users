@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% from 'macros/form_macros.html' import render_field, render_select %}
+
+{% block title %}
+    {% if action == 'create' %}
+        Создание пользователя
+    {% else %}
+        Редактирование пользователя
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>
+        {% if action == 'create' %}
+            Создание нового пользователя
+        {% else %}
+            Редактирование пользователя: {{ user.full_name }}
+        {% endif %}
+    </h1>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Назад</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST" action="
+            {% if action == 'create' %}
+                {{ url_for('user_create') }}
+            {% else %}
+                {{ url_for('user_edit', user_id=user.id) }}
+            {% endif %}
+        ">
+            {% if action == 'create' %}
+                {{ render_field('username', 'Логин', form_data.username, required=true, errors=errors, placeholder='Введите логин (минимум 5 символов, латиница и цифры)') }}
+                {{ render_field('password', 'Пароль', '', type='password', required=true, errors=errors, placeholder='Введите пароль') }}
+                {{ render_field('confirm_password', 'Подтверждение пароля', '', type='password', required=true, errors=errors, placeholder='Повторите пароль') }}
+            {% endif %}
+            
+            {{ render_field('last_name', 'Фамилия', form_data.last_name, errors=errors, placeholder='Введите фамилию') }}
+            {{ render_field('first_name', 'Имя', form_data.first_name, required=true, errors=errors, placeholder='Введите имя') }}
+            {{ render_field('patronymic', 'Отчество', form_data.patronymic, errors=errors, placeholder='Введите отчество') }}
+            
+            {{ render_select('role_id', 'Роль', roles, form_data.role_id, errors=errors) }}
+            
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if action == 'create' %}
+<div class="card mt-3">
+    <div class="card-header">
+        <h6 class="mb-0">Требования к паролю:</h6>
+    </div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>Не менее 8 символов</li>
+            <li>Не более 128 символов</li>
+            <li>Минимум одна заглавная буква</li>
+            <li>Минимум одна строчная буква</li>
+            <li>Минимум одна цифра</li>
+            <li>Без пробелов</li>
+            <li>Допустимые символы: латиница, кириллица, цифры и ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \ | " ' . , : ;</li>
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
