@@ -40,11 +40,9 @@
    Linux/Mac: source venv/bin/activate
 
 4. Установить зависимости:
-
-```bash
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
 
 5. Запустить приложение:
-
-```bash
-python app.py
+   ```bash
+   python app.py
