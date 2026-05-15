@@ -32,22 +32,22 @@
 1. Клонировать репозиторий
    
 2. Создать виртуальное окружение:
-   ```bash
-   python -m venv venv
+      ```bash
+      python -m venv venv
    
 3. Активировать виртуальное окружение:
    Windows:
-   ```bash
-   venv\Scripts\activate
-
+      ```bash
+      venv\Scripts\activate
+   
    Linux/Mac:
-   ```bash
-   source venv/bin/activate
+      ```bash
+      source venv/bin/activate
 
 5. Установить зависимости:
-   ```bash
-   pip install -r requirements.txt
+      ```bash
+      pip install -r requirements.txt
 
 6. Запустить приложение:
-   ```bash
-   python app.py
+      ```bash
+      python app.py
